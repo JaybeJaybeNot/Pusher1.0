@@ -1,4 +1,4 @@
-<h1 align="center"><u>Pusher 1.0</u></h1>
+<img width="395" height="327" alt="Screenshot 2026-06-12 at 7 15 56 PM" src="https://github.com/user-attachments/assets/6a896da2-a59f-4340-b98c-41ed273145d5" /><h1 align="center"><u>Pusher 1.0</u></h1>
 
 <p align="center"><i>June 8, 2026</i></p>
 
@@ -61,7 +61,6 @@ Pusher is a **4 Degree of Freedom wearable robotic arm** based on the anatomical
 <h1 align="center"><u>System Diagram</u></h1>
 
 <img width="669" height="327" alt="Screenshot 2026-06-12 at 7 11 54 PM" src="https://github.com/user-attachments/assets/339931a3-219f-4407-bab1-cf14b47a47fd" />
-<img width="332" height="263" alt="Screenshot 2026-06-12 at 7 12 18 PM" src="https://github.com/user-attachments/assets/25c1b8a4-03f6-4b62-9487-c4f212eb6c9f" />
 
 <h1 align="center"><u>Building the Project</u></h1>
 
@@ -84,11 +83,12 @@ Soldering:
 - Brass wool (sponges is useable, but not recommended) 
 - Flux 
 - Soldering gun 
-- <img width="670" height="327" alt="Screenshot 2026-06-12 at 7 11 36 PM" src="https://github.com/user-attachments/assets/3413a0ed-c4dd-4aa4-a02d-1e31f1b50d3b" />
-Fume extractor 
+- Fume extractor 
 - Solder wick (recommended to remove excess solder) 
 
 ## Assembling Mechanical Design
+
+<img width="332" height="263" alt="Screenshot 2026-06-12 at 7 12 18 PM" src="https://github.com/user-attachments/assets/25c1b8a4-03f6-4b62-9487-c4f212eb6c9f" />
 
 For assembly, please see the `FINAL ASSEMBLY` file in the `mechanical design` folder, opened in CAD software such as Fusion 360.
 
@@ -115,9 +115,22 @@ Trusted vendors such as [JLCPCB](https://jlcpcb.com/) and [LCSC](https://www.lcs
 After ordering your PCB and components from JLCPCB and LCSC, hand-solder them as follows:
 
 - 4x motor driver PCBs
-- 1x main controller PCB
+  <img width="221" height="113" alt="Screenshot 2026-06-12 at 7 13 52 PM" src="https://github.com/user-attachments/assets/987874d1-2db9-4e01-aee4-deb7f291f992" />
 
-Motor driver PCBs are secured in a dedicated mount, which is fastened to the joints themselves.
+- 1x main controller PCB
+  <img width="155" height="154" alt="Screenshot 2026-06-12 at 7 14 03 PM" src="https://github.com/user-attachments/assets/7ece82ce-05f1-45de-93e5-e8edbd3181ee" />
+
+
+Motor driver PCBs are secured in a dedicated mount, 
+
+<img width="212" height="125" alt="Screenshot 2026-06-12 at 7 14 15 PM" src="https://github.com/user-attachments/assets/7606d0ec-e4f3-4ad7-aada-e80c97b01426" />
+
+which is fastened to the joints themselves.
+
+<img width="230" height="237" alt="Screenshot 2026-06-12 at 7 14 32 PM" src="https://github.com/user-attachments/assets/6f145afa-e5c9-493d-b17c-3038a7f982c7" />
+
+<img width="330" height="243" alt="Screenshot 2026-06-12 at 7 14 49 PM" src="https://github.com/user-attachments/assets/9ce620fc-7a54-4601-98fe-94bf6535522d" />
+
 
 The controller PCB is left separate from the rest of the arm. The recommended option is to keep it on a desk during assembly and strap it to the arm during operation.
 
@@ -128,24 +141,53 @@ The wiring diagram is as follows:
 
 Connections:
 
-- From Joint 1 to Joint 2
+- From Joint 1 to Joint 2\
+  
+  <img width="315" height="322" alt="Screenshot 2026-06-12 at 7 15 09 PM" src="https://github.com/user-attachments/assets/f64c389f-3a01-40cc-9cb2-178b37fa8058" />
+  
 - From Joint 2 to Joint 3
+  <img width="471" height="286" alt="Screenshot 2026-06-12 at 7 15 31 PM" src="https://github.com/user-attachments/assets/a343b644-ea08-430c-8076-5ef33fb8653d" />
+
 - From Joint 3 to Bicep
+  
+<img width="204" height="426" alt="Screenshot 2026-06-12 at 7 15 42 PM" src="https://github.com/user-attachments/assets/92f73c21-46fe-4e49-a996-718c7a86e1d5" />
 
 The firmware includes a 360-degree clamp to prevent wires from excessive twisting and strain.
 
 ## Flashing Firmware
 
 ### Flashing STM32F103C8T6
+Note: The firmware should all be in the “Brushed_DC_Motor_Controller_STM32” folder (this is the folder you select for “create project from existing stm32cubeide project”). But for additional documentation, the pinouts and clock configuration is provided below:
+
+In STM32cubeMX, configure the pins as follows:
+
+<img width="400" height="316" alt="Screenshot 2026-06-12 at 7 16 09 PM" src="https://github.com/user-attachments/assets/825aa50d-fa86-4a6c-b599-735224098deb" />
+
+Now, in the Clock tab, configure the clocks as follows:
+
+<img width="937" height="428" alt="Screenshot 2026-06-12 at 7 17 12 PM" src="https://github.com/user-attachments/assets/c43f522a-7302-41be-b918-d8fa3305c2b8" />
+
 
 Note: The firmware should be placed in the `Brushed_DC_Motor_Controller_STM32` folder. This is the folder you select when creating a project from an existing STM32CubeIDE project.
 
-1. Connect `SWDIO`, `SWCLK`, `GND`, and `3V3` on the motor driver STM32 to the corresponding pins on your ST-LINK. A STM32 Nucleo board can be used to avoid third-party flashers that do not work.
-2. Remove the ST-Link isolation jumpers on CN2 of the Nucleo board so that you program the DC motor driver rather than the Nucleo itself.
-3. Import `Brushed_DC_Motor_Controller_STM32` as an **Existing STM32 project** into STM32CubeIDE.
-4. Open the project, find the build tool on the top toolbar, and click it. Verify that there are no errors. If workspace configuration causes errors, close STM32CubeIDE, reopen it, and select the `Software` folder as the workspace.
-5. Click the debug tool.
-6. Click Run.
+Step 1: Connect the SWDIO, SWCLK, GND, and 3v3 on the Motor Driver stm32 with the corresponding pins on your ST-LINK. Preferably, any STM32Nucleo can be used in order to avoid third party flashers that do not work. (trust me, speaking from experience). 
+
+<img width="574" height="380" alt="Screenshot 2026-06-12 at 7 17 55 PM" src="https://github.com/user-attachments/assets/533489fe-159b-4764-9ed7-e6b77e875dbd" />
+
+(Remove the “ST-Link isolation jumpers” on CN2 on the Nucleo Board so that you’re programming the dc motor driver, not the Nucleo itself)
+
+Step 2: Import “Brushed_DC_Motor_Controller_STM32” as an “Existing STM32 project” into stm32cubeIDE. 
+
+Step 3: Open the project, and find the build tool on the top toolbar, then click on it: 
+<img width="184" height="115" alt="Screenshot 2026-06-12 at 7 18 11 PM" src="https://github.com/user-attachments/assets/6cc5cdfc-fb86-4b5e-81ab-0bca21501ff3" />
+
+Verify that there are no errors. Most build errors arise from workspace configuration. If that happens, close STM32CubeIDE first. Then, reopen. When it asks for a workspace, select the “Software” folder. It should create the corresponding metadata files. Confirm that files are there. 
+Step 4: Click on “debug” tool. 
+<img width="163" height="104" alt="Screenshot 2026-06-12 at 7 18 20 PM" src="https://github.com/user-attachments/assets/5beb7ca8-08ce-49bf-9aa6-f69cbda4c370" />
+
+
+Step 5: Click on “Run”:
+<img width="193" height="118" alt="Screenshot 2026-06-12 at 7 18 29 PM" src="https://github.com/user-attachments/assets/87d5dcc8-afb3-42e1-8706-41272584b084" />
 
 If flashing succeeds, STM32CubeIDE should display a successful download message in the console.
 
