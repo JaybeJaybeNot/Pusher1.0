@@ -60,7 +60,6 @@ Pusher is a **4 Degree of Freedom wearable robotic arm** based on the anatomical
 
 <h1 align="center"><u>System Diagram</u></h1>
 
-[Image omitted from source document.]
 
 <h1 align="center"><u>Building the Project</u></h1>
 
