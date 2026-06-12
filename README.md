@@ -35,3 +35,273 @@
 |                        |         |                       |                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 |                        |         |                       |                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 |Total project $:        |272.59   |                       |                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+
+
+**Pusher 1.0**
+
+**jun/8/2026**
+
+affiliation: Fallout, Hackclub 
+
+Pusher is a **4 Degree of Freedom Wearable Robotic Arm** based on the anatomical structure of the human arm, with a maximum reach of \~0.65 meters and a weight of 5 kilograms. It is designed for **modularity**, aiming to serve as an affordable, general purpose **research platform** for Human-Computer Interfacing, such as studies involving the implementation of **EMG, EEG, and Computer Vision,** to assist in the **control of supernumerary arms.** As such, this project is ideal for both undergraduate researchers and hobbyists looking for an introduction to the study of HCI robotics, with potential to be used in graduate school prototyping due to the ease of production and low cost. 
+
+**Table of Contents**
+
+1. **Bill of Materials**
+
+2. **System Diagram**
+
+3. **Building the Project**
+
+   1. **Prerequisites**
+
+   2. **Assembling Mechanical Design**
+
+   3. **Assembling electronics**
+
+   4. **Flashing Firmware**
+
+4. **Author’s notes**
+
+   1. **Commentary on BOM**
+
+   2. **Guide to Adding Implementations (Taking Advantage of Modularity)**
+
+   3. **Future Implementations by Author**
+
+**Bill of Materials**
+
+**System Diagram Overall Idea**
+
+\
+
+
+**Assembling Mechanical Design**
+
+**For assembly, please see the \[FINAL ASSEMBLY] file in the “mechanical design” folder**, opened in a CAD software like Fusion 360. 
+
+The material simulated under stress, and made for manufacturability, is **PLA Plastic**, from 3D Printers like the Bambu models. 
+
+**in a software like Cura, upload and print the following:**
+
+**1x Bicep\_And\_Cap**
+
+**1x Bicep\_RU\_28\_Connector (in Bicep\_And\_Cap)**
+
+**1x Forearm**
+
+**3x Joint\_Cover**
+
+**1x Joint1**
+
+**2x Joints\_2\_and\_3**
+
+**3x RU\_28\_Connector**
+
+Approximately \~2kg in weight in PLA. 
+
+To assemble the physical design, it is recommended to have 30x m5 screws 10 mm, and 30x of the corresponding nuts. Then, 15x of m3 screws 10mm with 15x corresponding nuts. 
+
+\
+
+
+**Assembling Electrical Design**
+
+See **Trusted vendors** such as [JLCPCB](https://jlcpcb.com/) and [LCSC](https://www.lcsc.com/). 
+
+After ordering your PCB and components from JLCPCB and LCSC, you’ll need to hand solder them. The recipe is as follows:
+
+**4x** motor driver PCBs,
+
+**1x** main Controller PCB
+
+Motor Driver PCBs are **secured in a dedicated mount**,
+
+ 
+
+which is fastened to the Joints itself. 
+
+The controller PCB ****is left **separate** from the rest of the arm. Recommended option is to keep it on a desk during assembly, and strapped to the arm during operation. 
+
+**the wiring diagram is as follows:**
+
+red – 24v and 3.3v power supply bus
+
+yellow – I2C Communication Bus
+
+**From Joint 1 to Joint 2:**
+
+ From Joint 2 to joint 3:
+
+From Joint 3 to Bicep: 
+
+The firmware comes with a 360 degrees clamp, as to prevent the wires from excessive twisting and straining from one another. 
+
+**Flashing Software**
+
+**Flashing STM32f103c8t6** 
+
+Note: The firmware should all be in the “Brushed\_DC\_Motor\_Controller\_STM32” folder (this is the folder you select for “create project from existing stm32cubeide project”). But for additional documentation, the pinouts and clock configuration is provided below:
+
+1. In STM32cubeMX, configure the pins as follows:
+
+   1.
+
+2. Now, in the Clock tab, configure the clocks as follows:
+
+   1.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+
+**Step 1:** Connect the **SWDIO, SWCLK, GND, and 3v3 on the Motor Driver stm32** with the corresponding pins on your ST-LINK. Preferably, any [STM32Nucleo](https://www.digikey.jp/ja/products/detail/stmicroelectronics/NUCLEO-F413ZH/6559189) can be used in order to avoid third party flashers that **_do not work_**. (trust me, speaking from experience). 
+
+(Remove the “ST-Link isolation jumpers” on CN2 on the Nucleo Board so that you’re programming the dc motor driver, not the Nucleo itself)
+
+**Step 2:** Import “Brushed\_DC\_Motor\_Controller\_STM32” as an “Existing STM32 project” into **stm32cubeIDE**. 
+
+**Step 3:** Open the project, and find the build tool on the top toolbar, then click on it: 
+
+**Verify that there are no errors.** Most build errors arise from workspace configuration. **If that happens,** close STM32CubeIDE first. Then, reopen. When it asks for a workspace, select the “Software” folder. It should create the corresponding metadata files. Confirm that files are there. 
+
+**Step 4:** Click on “debug” tool. 
+
+**Step 5:** Click on “Run”:
+
+If flashing succeeds, STM32CubeIDE should display a successful download message in the console
+
+**Flashing ESP32**
+
+**Step 1:** Follow the steps in this video by AKP’s IoT Tech to **download and set up ESP32 IDF (watch until 4:20):** 
+
+ <https://www.youtube.com/watch?v=xQ-Zk0FaK-c>
+
+note: if the video somehow disintegrates from the face of earth, follow any tutorial that teaches you how to install ESP32 IDF, and stop when you made a project folder, which looks like this in VS code:
+
+**Step 2:** at **4:20**, replace the code in “hello\_world\_main.c”, with the contents in main.c located in the “ESP32 Joystick Controller” folder. 
+
+note: The code does not use external libraries, so do not worry about importing additional resources. 
+
+**Step 3:** 
+
+**In the esp32-IDF terminal, type in:**
+
+**‘’’**
+
+idf.py set-target esp32 
+
+‘’’
+
+Then (this step could take a while):
+
+‘’’
+
+idf.py build
+
+‘’’
+
+**Step 4:** Connect the esp32 to your computer via USB. 
+
+\
+
+
+On windows, select the esp32 model and the communication port. ports should appear as
+
+‘’’
+
+ “COMx” 
+
+‘’’
+
+finally, copy this into esp32 IDF terminal:
+
+‘’’
+
+idf.py -p COM3 flash
+
+‘’’
+
+where you replace 3 in “COM3” with the corresponding com number. 
+
+**Mac** 
+
+on **Mac,** they appear as
+
+‘’’
+
+ “/dev/ttyUSBx”
+
+‘’’
+
+you can identify the com in Mac using this command:
+
+‘’’
+
+ls -la /dev | grep -E "cu\\.(SLAB|usbserial)"
+
+‘’’
+
+Then, follow these steps:
+
+\# 1. Source the ESP-IDF environment (adjust path if installed elsewhere) 
+
+source \~/esp/esp-idf/export.sh 
+
+\# 2. Set the target chip (e.g., esp32, esp32s2, esp32c3) 
+
+idf.py set-target esp32 
+
+\# 3. Build and flash the project (replace with your detected port) 
+
+idf.py -p /dev/cu.SLAB\_USBtoUART flash
+
+**Linux:**
+
+in linux, ports appear as  
+
+‘’’
+
+“/dev/ttyACMx”
+
+‘’’
+
+First, add your user to the hardware access group:
+
+Ubuntu/Debian:
+
+sudo usermod -aG dialout $USER
+
+Arch Linux:
+
+sudo usermod -aG uucp $USER
+
+Then, find the device path using this command:\
+‘’’
+
+ls /dev/ttyUSB\* /dev/ttyACM\*
+
+‘’’
+
+Then, navigate into your project directory. In terminal, select the model using this command:
+
+‘’’
+
+[idf.py](http://idf.py) set-target esp32 
+
+‘’’
+
+_(Change esp32 to esp32s3, esp32c3, etc., depending on your specific board)._
+
+_Finally, flash:_
+
+[_idf.py_](http://idf.py) _-p /dev/ttyUSB0 flash monitor_
+
+_(Replace /dev/ttyUSB0 with the actual device path identified in Step 2)._ 
