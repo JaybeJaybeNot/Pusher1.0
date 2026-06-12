@@ -1,5 +1,3 @@
-<img width="395" height="327" alt="Screenshot 2026-06-12 at 7 15 56 PM" src="https://github.com/user-attachments/assets/6a896da2-a59f-4340-b98c-41ed273145d5" /><h1 align="center"><u>Pusher 1.0</u></h1>
-
 <p align="center"><i>June 8, 2026</i></p>
 
 **Affiliation:** Fallout, Hackclub
@@ -115,9 +113,11 @@ Trusted vendors such as [JLCPCB](https://jlcpcb.com/) and [LCSC](https://www.lcs
 After ordering your PCB and components from JLCPCB and LCSC, hand-solder them as follows:
 
 - 4x motor driver PCBs
+
   <img width="221" height="113" alt="Screenshot 2026-06-12 at 7 13 52 PM" src="https://github.com/user-attachments/assets/987874d1-2db9-4e01-aee4-deb7f291f992" />
 
 - 1x main controller PCB
+
   <img width="155" height="154" alt="Screenshot 2026-06-12 at 7 14 03 PM" src="https://github.com/user-attachments/assets/7ece82ce-05f1-45de-93e5-e8edbd3181ee" />
 
 
@@ -146,6 +146,7 @@ Connections:
   <img width="315" height="322" alt="Screenshot 2026-06-12 at 7 15 09 PM" src="https://github.com/user-attachments/assets/f64c389f-3a01-40cc-9cb2-178b37fa8058" />
   
 - From Joint 2 to Joint 3
+
   <img width="471" height="286" alt="Screenshot 2026-06-12 at 7 15 31 PM" src="https://github.com/user-attachments/assets/a343b644-ea08-430c-8076-5ef33fb8653d" />
 
 - From Joint 3 to Bicep
@@ -179,14 +180,18 @@ Step 1: Connect the SWDIO, SWCLK, GND, and 3v3 on the Motor Driver stm32 with th
 Step 2: Import “Brushed_DC_Motor_Controller_STM32” as an “Existing STM32 project” into stm32cubeIDE. 
 
 Step 3: Open the project, and find the build tool on the top toolbar, then click on it: 
+
 <img width="184" height="115" alt="Screenshot 2026-06-12 at 7 18 11 PM" src="https://github.com/user-attachments/assets/6cc5cdfc-fb86-4b5e-81ab-0bca21501ff3" />
 
 Verify that there are no errors. Most build errors arise from workspace configuration. If that happens, close STM32CubeIDE first. Then, reopen. When it asks for a workspace, select the “Software” folder. It should create the corresponding metadata files. Confirm that files are there. 
+
 Step 4: Click on “debug” tool. 
+
 <img width="163" height="104" alt="Screenshot 2026-06-12 at 7 18 20 PM" src="https://github.com/user-attachments/assets/5beb7ca8-08ce-49bf-9aa6-f69cbda4c370" />
 
 
 Step 5: Click on “Run”:
+
 <img width="193" height="118" alt="Screenshot 2026-06-12 at 7 18 29 PM" src="https://github.com/user-attachments/assets/87d5dcc8-afb3-42e1-8706-41272584b084" />
 
 If flashing succeeds, STM32CubeIDE should display a successful download message in the console.
