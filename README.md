@@ -60,12 +60,33 @@ Pusher is a **4 Degree of Freedom wearable robotic arm** based on the anatomical
 
 <h1 align="center"><u>System Diagram</u></h1>
 
+<img width="669" height="327" alt="Screenshot 2026-06-12 at 7 11 54 PM" src="https://github.com/user-attachments/assets/339931a3-219f-4407-bab1-cf14b47a47fd" />
+<img width="332" height="263" alt="Screenshot 2026-06-12 at 7 12 18 PM" src="https://github.com/user-attachments/assets/25c1b8a4-03f6-4b62-9487-c4f212eb6c9f" />
 
 <h1 align="center"><u>Building the Project</u></h1>
 
 ## Prerequisites
 
-This source document does not provide a completed prerequisites list.
+what you will need:
+
+- A 3d printer such as Bambu Lab capable of a printing area of 
+- VS Code (my goat!)
+- STM32CubeIDE 
+- If you have v2.0 and later versions of STM32CubeIDE, you’ll also need STM32CubeMX
+- ESP32 IDF
+- Cura 
+- an STM32 Nucleo Board
+- Soldering:
+
+Soldering:
+
+- Soldering iron 
+- Brass wool (sponges is useable, but not recommended) 
+- Flux 
+- Soldering gun 
+- <img width="670" height="327" alt="Screenshot 2026-06-12 at 7 11 36 PM" src="https://github.com/user-attachments/assets/3413a0ed-c4dd-4aa4-a02d-1e31f1b50d3b" />
+Fume extractor 
+- Solder wick (recommended to remove excess solder) 
 
 ## Assembling Mechanical Design
 
