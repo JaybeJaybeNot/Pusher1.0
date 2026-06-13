@@ -1,6 +1,6 @@
 <p align="center"><i>June 8, 2026</i></p>
 
-<img width="1748" height="2480" alt="Pusher-Page-A5" src="https://github.com/user-attachments/assets/a99bd23f-5b43-4a56-8726-74bbbd154b53" />
+<img width="1749" height="2481" alt="Pusher-A5-2" src="https://github.com/user-attachments/assets/3b8dbb8c-2414-44cc-9c43-74bdc160c342" />
 
 
 **Affiliation:** Fallout, Hackclub
