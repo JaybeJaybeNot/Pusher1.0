@@ -5,6 +5,8 @@
 
 **Affiliation:** Fallout, Hackclub
 
+Sanity Checked by a friend, a CS Graduate from UofM working in robotics.
+
 Pusher is a **4 Degree of Freedom wearable robotic arm** based on the anatomical structure of the human arm, with a maximum reach of approximately **0.65 meters** and a weight of **5 kilograms**. It is designed for **modularity**, aiming to serve as an affordable, general-purpose **research platform** for Human-Computer Interfacing, such as studies involving **EMG, EEG, and Computer Vision**, to assist in the **control of supernumerary arms**. As such, this project is intended for both undergraduate researchers and hobbyists looking for an introduction to the study of HCI robotics, with potential to be used in graduate-school prototyping due to the ease of production and low cost.
 
 <h1 align="center"><u>Table of Contents</u></h1>
