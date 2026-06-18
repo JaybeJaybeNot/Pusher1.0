@@ -11,7 +11,7 @@ Pusher is a **4 Degree of Freedom wearable robotic arm** based on the anatomical
 
 ***Why I Started This Project***
 
-On the surface level, the this project may seem to simply be a project aiming to develop a supernumerary, robotic arm to assist in human tasks. However, due to the modularity and inexpensiveness of the project, it serves as an amazing platform to experiment with robot theory, from inverse kinematics to computer vision, EEG/EMG signal processing, path planning, control algorithms, etc. In short, due to my background as an underfunded hardware researcher, I've made the "project to enable future projects"
+On the surface level, the this project may seem to simply be a project aiming to develop a supernumerary, robotic arm to assist in human tasks. However, due to the modularity and inexpensiveness of the project, it serves as an amazing platform to prototype with robot theory, from inverse kinematics to computer vision, EEG/EMG signal processing, path planning, control algorithms, etc. without burning cash on hardware. In short, due to my background as an underfunded hardware researcher, I've made the "project to enable future projects"
 
 <h1 align="center"><u>Table of Contents</u></h1>
 
